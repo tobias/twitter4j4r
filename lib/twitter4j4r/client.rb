@@ -1,5 +1,7 @@
 require 'jar/twitter4j-core-2.2.6.jar'
 require 'jar/twitter4j-stream-2.2.6.jar'
+require 'jar/twitter4j-async-2.2.6.jar'
+
 require 'twitter4j4r/listener'
 
 module Twitter4j4r
