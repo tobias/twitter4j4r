@@ -1,3 +1,5 @@
+require 'jruby/core_ext'
+
 require 'jar/twitter4j-core-2.2.6.jar'
 require 'jar/twitter4j-stream-2.2.6.jar'
 require 'jar/twitter4j-async-2.2.6.jar'
@@ -31,6 +33,7 @@ module Twitter4j4r
     end
     
     def start(search_terms)
+      Listener.become_java!
       @stream.addListener(Listener.new(self, @status_block, @exception_block, @limitation_block))
       @stream.filter(Java::Twitter4j::FilterQuery.new(0, nil, search_terms.to_java(:string)))
     end
