@@ -1,4 +1,5 @@
 require 'jar/twitter4j-stream-2.2.6.jar'
+require 'jruby/core_ext'
 
 module Twitter4j4r
     class Listener
@@ -29,3 +30,5 @@ module Twitter4j4r
     end
   end
 end
+
+Twitter4j4r::Listener.become_java!
