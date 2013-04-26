@@ -50,6 +50,25 @@ a second argument that will be the client instance (similar to tweetstream):
       end
     end
 
+Authentication can also be performed by:
+
+    @config = Twitter4j4r::Config.new
+    @config.username = 'username'
+    @config.password = 'password'
+    
+    @client = Twitter4j4r::Client.new(@config)
+
+Or:
+
+    @config = Twitter4j4r::Config.new
+    @config.consumer_key         = 'ABC456'
+    @config.consumer_secret      = 'ABC456'
+    @config.access_token         = 'ABC456'
+    @config.access_token_secret  = 'ABC456'
+    
+    @client = Twitter4j4r::Client.new(@config)
+
+
 ## Why?
 
 Because tweetstream uses EventMachine, and EM doesn't support TLS
