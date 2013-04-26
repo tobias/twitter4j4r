@@ -3,11 +3,21 @@ require 'jar/twitter4j-stream-2.2.6.jar'
 require 'jar/twitter4j-async-2.2.6.jar'
 
 require 'twitter4j4r/listener'
+require 'twitter4j4r/config'
 
 module Twitter4j4r
   class Client
-    def initialize(auth_map)
-      @stream = Java::Twitter4j::TwitterStreamFactory.new(config(auth_map)).instance
+    def initialize(config)
+      unless config.is_a? Config
+        auth_map                    = config
+        config                      = Twitter4j4r::Config.new
+        config.consumer_key         = auth_map[:consumer_key]
+        config.consumer_secret      = auth_map[:consumer_secret]
+        config.access_token         = auth_map[:access_token]
+        config.access_token_secret  = auth_map[:access_secret]
+      end
+
+      @stream = Java::Twitter4j::TwitterStreamFactory.new(config.build).instance
     end
 
     def on_exception(&block)
@@ -39,18 +49,5 @@ module Twitter4j4r
       @stream.cleanUp
       @stream.shutdown
     end
-
-    protected
-    
-    def config(auth_map)
-      config = Java::Twitter4jConf::ConfigurationBuilder.new
-      config.setDebugEnabled(true)
-      config.setOAuthConsumerKey(auth_map[:consumer_key])
-      config.setOAuthConsumerSecret(auth_map[:consumer_secret])
-      config.setOAuthAccessToken(auth_map[:access_token])
-      config.setOAuthAccessTokenSecret(auth_map[:access_secret])
-      config.build
-    end
-
   end
 end

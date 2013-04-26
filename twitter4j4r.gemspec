@@ -2,8 +2,8 @@
 require File.expand_path('../lib/twitter4j4r/version', __FILE__)
 
 Gem::Specification.new do |gem|
-  gem.authors       = ["Tobias Crawley", "Marek Jelen"]
-  gem.email         = ["toby@tcrawley.org"]
+  gem.authors       = ["Tobias Crawley", "Marek Jelen", "Thomas Claridge"]
+  gem.email         = ["toby@tcrawley.org", "thomas.claridge@incompletepackets.co.nz"]
   gem.description   = %q{A thin, woefully inadequate wrapper around http://twitter4j.org/}
   gem.summary       = %q{A thin, woefully inadequate wrapper around http://twitter4j.org/ that only supports the stream api with keywords.}
   gem.homepage      = "https://github.com/tobias/twitter4j4r"

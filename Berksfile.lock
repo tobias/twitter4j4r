@@ -1,0 +1,6 @@
+cookbook 'apt', :locked_version => '1.9.2'
+cookbook 'java', :locked_version => '1.10.0'
+cookbook 'rvm', :git => 'git://github.com/fnichol/chef-rvm.git', :ref => '08a06bc7c3c9fd0fb6b3a9b80f27bd74e109660c'
+cookbook 'windows', :locked_version => '1.8.8'
+cookbook 'chef_handler', :locked_version => '1.1.4'
+cookbook 'chef_gem', :locked_version => '0.1.0'
