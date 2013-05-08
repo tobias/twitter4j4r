@@ -36,13 +36,18 @@ module Twitter4j4r
     end
 
     def track(*terms, &block)
-      on_status(&block)
-      start(terms)
+      add_listener(&block)
+      @stream.filter(Java::Twitter4j::FilterQuery.new(0, nil, search_terms.to_java(:string)))
     end
     
-    def start(search_terms)
-      @stream.addListener(Listener.new(self, @status_block, @exception_block, @limitation_block))
-      @stream.filter(Java::Twitter4j::FilterQuery.new(0, nil, search_terms.to_java(:string)))
+    def sample(&block)
+      add_listener(&block)
+      @stream.sample
+    end
+
+    def add_listener(&block)
+      on_status(&block)
+      @stream.addListener(Listener.new(self, @status_block, @exception_block, @limitation_block, @deletion_block))
     end
 
     def stop
