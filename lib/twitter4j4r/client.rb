@@ -17,7 +17,7 @@ module Twitter4j4r
         config.access_token_secret  = auth_map[:access_secret]
       end
 
-      @stream = Java::Twitter4j::TwitterStreamFactory.new(config.build).instanceend
+      @stream = Java::Twitter4j::TwitterStreamFactory.new(config.build).instance
     end
 
     def on_exception(&block)
