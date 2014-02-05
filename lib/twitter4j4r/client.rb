@@ -18,6 +18,7 @@ module Twitter4j4r
       end
 
       @stream = Java::Twitter4j::TwitterStreamFactory.new(config.build).instance
+      @twitter = Java::Twitter4j::TwitterFactory.new(build).instance
     end
 
     def on_exception(&block)
@@ -39,7 +40,11 @@ module Twitter4j4r
       self.add_listener(&block)
       @stream.filter(Java::Twitter4j::FilterQuery.new(0, nil, search_terms.to_java(:string)))
     end
-    
+
+    def lookup_users(user_names)
+      @twitter.lookup_users(user_names.to_java(:string))
+    end
+
     def sample(&block)
       add_listener(&block)
       @stream.sample
