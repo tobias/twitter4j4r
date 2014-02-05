@@ -1,6 +1,6 @@
-require 'jar/twitter4j-core-2.2.6.jar'
-require 'jar/twitter4j-stream-2.2.6.jar'
-require 'jar/twitter4j-async-2.2.6.jar'
+require 'jar/twitter4j-core-3.0.5.jar'
+require 'jar/twitter4j-stream-3.0.5.jar'
+require 'jar/twitter4j-async-3.0.5.jar'
 
 require 'twitter4j4r/listener'
 require 'twitter4j4r/config'

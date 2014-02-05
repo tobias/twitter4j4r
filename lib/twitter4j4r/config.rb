@@ -1,4 +1,4 @@
-require 'jar/twitter4j-core-2.2.6.jar'
+require 'jar/twitter4j-core-3.0.5.jar'
 
 module Twitter4j4r
   class Config
