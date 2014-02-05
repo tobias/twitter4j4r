@@ -47,6 +47,13 @@ module Twitter4j4r
       @stream.filter(Java::Twitter4j::FilterQuery.new(0, nil, search_terms.to_java(:string)))
     end
 
+    def filter(twitter_ids, *search_terms, &block)
+      add_listener(&block)
+      @stream.filter(Java::Twitter4j::FilterQuery.new(0,
+                     twitter_ids.to_java(:long),
+                     search_terms.to_java(:string)))
+    end
+
     def lookup_users(user_names)
       @twitter.lookup_users(user_names.to_java(:string))
     end
