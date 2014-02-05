@@ -43,7 +43,7 @@ module Twitter4j4r
     end
 
     def track(*search_terms, &block)
-      self.add_listener(&block)
+      add_listener(&block)
       @stream.filter(Java::Twitter4j::FilterQuery.new(0, nil, search_terms.to_java(:string)))
     end
 
