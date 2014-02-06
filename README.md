@@ -62,6 +62,9 @@ Thanks to [Marek Jelen](https://github.com/marekjelen) for the inspiration.
 Yes! But I was a hair away from naming it `twitter4j4r4u-and-me`, so take
 what you're given.
 
+## Changelog
+ [changelog](CHANGELOG.md)
+
 ## Contributing
 
 1. Fork it
