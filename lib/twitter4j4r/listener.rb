@@ -5,11 +5,12 @@ module Twitter4j4r
     class Listener
     include Java::Twitter4j::StatusListener
 
-    def initialize(client, status_block, exception_block, limitation_block)
+    def initialize(client, status_block, exception_block, limitation_block, deletion_block)
       @client = client
       @status_block = status_block
       @exception_block = exception_block
       @limitation_block = limitation_block
+      @deletion_block = deletion_block
     end
     
     def onStatus(status)
@@ -22,6 +23,10 @@ module Twitter4j4r
 
     def onTrackLimitationNotice(limited_count)
       call_block_with_client(@limitation_block, limited_count)
+    end
+
+    def onDeletionNotice(deletion_notice)
+      call_block_with_client(@deletion_block, deletion_notice)
     end
 
     protected

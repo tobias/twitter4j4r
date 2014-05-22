@@ -32,6 +32,11 @@ module Twitter4j4r
       self
     end
 
+    def on_deletion(&block)
+      @deletion_block = block
+      self
+    end
+
     def on_status(&block)
       @status_block = block
       self
@@ -65,7 +70,7 @@ module Twitter4j4r
 
     def add_listener(&block)
       on_status(&block)
-      @stream.addListener(Listener.new(self, @status_block, @exception_block, @limitation_block))
+      @stream.addListener(Listener.new(self, @status_block, @exception_block, @limitation_block, @deletion_block))
     end
 
     def stop
